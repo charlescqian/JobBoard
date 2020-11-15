@@ -7,18 +7,19 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
+import TextField from '@material-ui/core/TextField';
 
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-  return { id, date, name, shipTo, paymentMethod, amount };
+// Generate Application Data 
+function createData(id, date, name, email, resume) {
+  return { id, date, name, email, resume};
 }
 
 const rows = [
-  createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719', 312.44),
-  createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574', 866.99),
-  createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
-  createData(3, '16 Mar, 2019', 'Michael Jackson', 'Gary, IN', 'AMEX ⠀•••• 2000', 654.39),
-  createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79),
+  createData(0, '16 Mar, 2019', 'Elvis Presley', 'shazow@comcast.net', 'EPresleyCV.pdf'),
+  createData(1, '16 Mar, 2019', 'Paul McCartney', 'ehood@optonline.net', 'Paul_McCartnery_Resume.pdf'),
+  createData(2, '16 Mar, 2019', 'Tom Scholz', 'blixem@msn.com', 'Tom-S-Resume.pdf'),
+  createData(3, '16 Mar, 2019', 'Michael Jackson', 'emcleod@me.com', 'Micahel-Jackson-Resume-2020.pdf'),
+  createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'esasaki@live.com', 'BSpringsteenResume.pdf'),
 ];
 
 function preventDefault(event) {
@@ -31,19 +32,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Orders() {
+export default function ApplicationTable() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>Recent Orders</Title>
+      <Title>Applications</Title>
+      <TextField id="posting" label="Posting"/>
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
             <TableCell>Name</TableCell>
-            <TableCell>Ship To</TableCell>
-            <TableCell>Payment Method</TableCell>
-            <TableCell align="right">Sale Amount</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell>Resume</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -51,9 +52,8 @@ export default function Orders() {
             <TableRow key={row.id}>
               <TableCell>{row.date}</TableCell>
               <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{row.amount}</TableCell>
+              <TableCell>{row.email}</TableCell>
+              <TableCell><a href={`/resume/${row.resume}`}>{row.resume}</a></TableCell>
             </TableRow>
           ))}
         </TableBody>

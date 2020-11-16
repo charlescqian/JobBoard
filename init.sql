@@ -8,7 +8,7 @@ CREATE TABLE Application(timeApplied DATETIME(6),
             );
 
 CREATE TABLE Jobseeker(jobseekerID int,
-			  email CHAR(20) NOT NULL,
+			  email CHAR(50) NOT NULL,
 			  password CHAR(20) NOT NULL,
 			  name CHAR(20) NOT NULL,
 			PRIMARY KEY(jobseekerID),
@@ -23,7 +23,7 @@ CREATE TABLE Company( companyID int,
 
 
 CREATE TABLE Employer(employerID int,
-			  email CHAR(20) NOT NULL,
+			  email CHAR(50) NOT NULL,
 			  password CHAR(20) NOT NULL,
 			  name CHAR(20) NOT NULL,
 			  cID int,
@@ -32,8 +32,7 @@ CREATE TABLE Employer(employerID int,
 			  FOREIGN KEY(cID) REFERENCES Company(companyID)
 			ON DELETE CASCADE ON UPDATE CASCADE);	
 
-
-CREATE TABLE E1(jobDescription TEXT,
+CREATE TABLE E1(jobDescription VARCHAR(255),
 				eID int,
 		         department char(50),
 		         PRIMARY KEY(jobDescription),
@@ -53,8 +52,10 @@ CREATE TABLE E1(jobDescription TEXT,
 CREATE TABLE J1(jobAddress CHAR(50),
 		        industryType CHAR(20),
 				companyName CHAR(50),
+            jID int,
+			
 		        PRIMARY KEY(jobAddress, industryType),
-        FOREIGN KEY(jobAddress, industryType) REFERENCES Job(jobID)
+        FOREIGN KEY(jID) REFERENCES Job(jobID)
         ON DELETE CASCADE);
 
 CREATE TABLE Posting(postingID int,
@@ -134,5 +135,19 @@ ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY(aID) REFERENCES Application(applicationID)
 ON DELETE CASCADE ON UPDATE CASCADE) ;
 
+				       
+				       
+				       
+INSERT INTO Application
+VALUES('2007-05-08 12:35:29.123', 18282);
 
+INSERT INTO Company
+VALUES(10034,'google', "dont be evil");
 
+INSERT INTO Employer
+VALUES(18324, 'mzuckerberg@facebook.com', 'badopsec', 'mark zuckerberg', NULL);
+REPLACE INTO Employer
+VALUES(18324, 'mzuckerberg@facebook.com', 'badopsec', 'mark zuckerberg', 10034);
+
+INSERT INTO E1 
+VALUES('this job sucks', 18324, 'engineering');

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Link from '@material-ui/core/Link';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,23 +7,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
 import { Button, TextField, Grid } from '@material-ui/core';
-
-// Generate Application Data 
-function createData(id, date, name, email, resume) {
-  return { id, date, name, email, resume};
-}
-
-const rows = [
-  // createData(0, '16 Mar, 2019', 'Elvis Presley', 'shazow@comcast.net', 'EPresleyCV.pdf'),
-  // createData(1, '16 Mar, 2019', 'Paul McCartney', 'ehood@optonline.net', 'Paul_McCartnery_Resume.pdf'),
-  // createData(2, '16 Mar, 2019', 'Tom Scholz', 'blixem@msn.com', 'Tom-S-Resume.pdf'),
-  // createData(3, '16 Mar, 2019', 'Michael Jackson', 'emcleod@me.com', 'Micahel-Jackson-Resume-2020.pdf'),
-  // createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'esasaki@live.com', 'BSpringsteenResume.pdf'),
-];
-
-function preventDefault(event) {
-  event.preventDefault();
-}
 
 const useStyles = makeStyles((theme) => ({
   seeMore: {
@@ -53,14 +35,15 @@ class ApplicationTable extends Component {
   getApplications = async () => {
     console.log(this.state.postingID);
     fetch(`/api/applications/${this.state.postingID}`)
-    .then(res => res.json())
-    // .then(res => console.log(res))
+    .then(res => {
+      if(!res.ok) throw new Error(res.status);
+      else return res.json();
+    })
     .then(res => this.setState({applications: res}))
-    
   }
 
   render() {
-    const {classes} = this.props;
+    
     return(
       <React.Fragment>
       <Title>Applications</Title>

@@ -138,7 +138,9 @@ VALUES
 	('2020-11-07 12:29:05', 1, 'Paul_McCartnery_Resume.pdf'),
 	('2020-11-08 15:22:10', 2, 'Tom-S-Resume.pdf'),
 	('2020-11-09 11:29:23', 3, 'Micahel-Jackson-Resume-2020.pdf'),
-	('2020-11-10 18:05:36', 4, 'BSpringsteenResume.pdf');
+	('2020-11-10 18:05:36', 4, 'BSpringsteenResume.pdf'),
+	('2020-11-06 19:53:41', 5, 'EPresleyCV.pdf'),
+	('2020-11-06 12:25:36', 6, 'Paul_McCartnery_Resume.pdf');
 
 INSERT INTO Jobseeker
 VALUES
@@ -160,23 +162,25 @@ VALUES('this job sucks', 18324, 'engineering');
 INSERT INTO Job
 VALUES
 	('Engineering', 'Software', 100000, 0, "Software Development Engineer", 18324),
-	('Engineering', 'Software', 200000, 1, "Senior Software Development Engineer", 18324);
-
+	('Engineering', 'Software', 200000, 1, "Senior Software Development Engineer", 18324),
+	('Engineering', 'Software', 80000, 2, "Software Engineer Intern", 18324);
 -- TODO: Add values into J1
 
 INSERT INTO Posting
 VALUES 
 	(0, '2020-11-01 09:00:00', 0, 'Open'),
-	(1, '2020-11-01 10:00:00', 1, 'Open');
+	(1, '2020-11-01 10:00:00', 1, 'Open'),
+	(2, '2020-11-05 12:30:00', 2, 'Closed');
 	
-INSERT INTO Apply
+INSERT INTO Apply (pID, jID, aID)
 VALUES
 	(0, 0, 0),
 	(0, 1, 1),
 	(0, 2, 2),
 	(1, 3, 3),
-	(1, 4, 4);
-	
+	(1, 4, 4),
+	(2, 0, 5),
+	(2, 1, 6);
 				       
 -- INSERT INTO Application
 -- VALUES('2007-05-08 12:35:29.123', 18282);

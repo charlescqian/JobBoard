@@ -24,7 +24,8 @@ app.get('/api/applications/:postingID', (req, res) => {
         // Create the SQL query with the given postingID
         const sql = `SELECT app.applicationID as id, date_format(app.timeApplied, "%m/%d/%Y %H:%i") as timeApplied, js.name, js.email, app.fileName as resume 
                     FROM Apply a, Application app, jobseeker js 
-                    WHERE a.pID=${req.params.postingID} and a.aID = app.applicationID and js.jobseekerID = a.jID`;
+                    WHERE a.pID=${req.params.postingID} and a.aID = app.applicationID and js.jobseekerID = a.jID
+                    ORDER BY timeApplied`;
 
         // Query the DB
         con.query(sql, function (err, result) {
@@ -46,7 +47,8 @@ app.get('/api/numApplicationsByDay/:daysBack', (req, res) => {
         const sql = `SELECT DATE_FORMAT(app.timeApplied, "%m/%d/%Y") as date, COUNT(*) as count
                     FROM Application app
                     WHERE app.timeApplied BETWEEN NOW() - INTERVAL ${req.params.daysBack} DAY AND NOW()
-                    GROUP BY date`;
+                    GROUP BY date
+                    ORDER BY date`;
         
         // Query the DB
         con.query(sql, function (err, result) {

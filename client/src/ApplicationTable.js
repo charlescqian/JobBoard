@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
-import TextField from '@material-ui/core/TextField';
+import { Button, TextField, Grid } from '@material-ui/core';
 
 // Generate Application Data 
 function createData(id, date, name, email, resume) {
@@ -15,11 +15,11 @@ function createData(id, date, name, email, resume) {
 }
 
 const rows = [
-  createData(0, '16 Mar, 2019', 'Elvis Presley', 'shazow@comcast.net', 'EPresleyCV.pdf'),
-  createData(1, '16 Mar, 2019', 'Paul McCartney', 'ehood@optonline.net', 'Paul_McCartnery_Resume.pdf'),
-  createData(2, '16 Mar, 2019', 'Tom Scholz', 'blixem@msn.com', 'Tom-S-Resume.pdf'),
-  createData(3, '16 Mar, 2019', 'Michael Jackson', 'emcleod@me.com', 'Micahel-Jackson-Resume-2020.pdf'),
-  createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'esasaki@live.com', 'BSpringsteenResume.pdf'),
+  // createData(0, '16 Mar, 2019', 'Elvis Presley', 'shazow@comcast.net', 'EPresleyCV.pdf'),
+  // createData(1, '16 Mar, 2019', 'Paul McCartney', 'ehood@optonline.net', 'Paul_McCartnery_Resume.pdf'),
+  // createData(2, '16 Mar, 2019', 'Tom Scholz', 'blixem@msn.com', 'Tom-S-Resume.pdf'),
+  // createData(3, '16 Mar, 2019', 'Michael Jackson', 'emcleod@me.com', 'Micahel-Jackson-Resume-2020.pdf'),
+  // createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'esasaki@live.com', 'BSpringsteenResume.pdf'),
 ];
 
 function preventDefault(event) {
@@ -32,12 +32,56 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ApplicationTable() {
-  const classes = useStyles();
-  return (
-    <React.Fragment>
+class ApplicationTable extends Component {
+  constructor() {
+    super()
+    this.state = {
+      applications: [],
+      postingID: '',
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.getApplications = this.getApplications.bind(this);
+  }
+
+  handleChange({target}) {
+    this.setState({
+      [target.name]: target.value
+    });
+  }
+
+  getApplications = async () => {
+    console.log(this.state.postingID);
+    fetch(`/api/applications/${this.state.postingID}`)
+    .then(res => console.log(res))
+    .then(res => res.json())
+    .then(json => json.applications)
+    .then(applications => this.setState({'applications': applications}))
+    
+  }
+
+  render() {
+    const {classes} = this.props;
+    return(
+      <React.Fragment>
       <Title>Applications</Title>
-      <TextField id="posting" label="Posting"/>
+      <Grid container direction="row" justify="flex-end" spacing={3}>
+        <Grid item xs={3}>
+          <TextField 
+            id="posting" 
+            name="postingID"
+            label="Posting" 
+            value={this.state.postingID}
+            type='number'
+            onChange={this.handleChange}/>
+        </Grid>
+        <Grid item xs={3}>
+          <Button 
+            variant="contained" 
+            onClick={this.getApplications}
+            >Search</Button>
+        </Grid>
+      </Grid>
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -48,7 +92,7 @@ export default function ApplicationTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {this.state.applications.map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.date}</TableCell>
               <TableCell>{row.name}</TableCell>
@@ -64,5 +108,9 @@ export default function ApplicationTable() {
         </Link>
       </div>
     </React.Fragment>
-  );
+    );
+  }
 }
+
+
+export default withStyles(useStyles)(ApplicationTable);

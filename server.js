@@ -23,7 +23,7 @@ app.get('/api/applications/:postingID', (req, res) => {
         if (err) throw err;
         console.log("Connected");
         // Create the SQL query with the given postingID
-        var sql = `select app.timeApplied, js.name, js.email, app.fileName from Apply a, Application app, jobseeker js where a.pID=${req.params.postingID} and a.aID = app.applicationID and js.jobseekerID = a.jID`;
+        var sql = `select app.applicationID as id, date_format(app.timeApplied, "%m/%d/%Y %H:%i") as timeApplied, js.name, js.email, app.fileName as resume from Apply a, Application app, jobseeker js where a.pID=${req.params.postingID} and a.aID = app.applicationID and js.jobseekerID = a.jID`;
         // Query the DB
         con.query(sql, function (err, result) {
             if (err) throw err;

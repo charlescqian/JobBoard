@@ -53,10 +53,9 @@ class ApplicationTable extends Component {
   getApplications = async () => {
     console.log(this.state.postingID);
     fetch(`/api/applications/${this.state.postingID}`)
-    .then(res => console.log(res))
     .then(res => res.json())
-    .then(json => json.applications)
-    .then(applications => this.setState({'applications': applications}))
+    // .then(res => console.log(res))
+    .then(res => this.setState({applications: res}))
     
   }
 
@@ -85,7 +84,7 @@ class ApplicationTable extends Component {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
+            <TableCell>Time Applied</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>Resume</TableCell>
@@ -94,19 +93,19 @@ class ApplicationTable extends Component {
         <TableBody>
           {this.state.applications.map((row) => (
             <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
+              <TableCell>{row.timeApplied}</TableCell>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.email}</TableCell>
               <TableCell><a href={`/resume/${row.resume}`}>{row.resume}</a></TableCell>
+              <TableCell>
+                <Button variant="contained" color="primary" style={{textTransform: 'none'}}>
+                  Interview
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <div className={classes.seeMore}>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          See more orders
-        </Link>
-      </div>
     </React.Fragment>
     );
   }

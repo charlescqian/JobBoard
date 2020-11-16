@@ -185,10 +185,10 @@ export default function Dashboard() {
                 <Deposits />
               </Paper>
             </Grid>
-            {/* Recent Orders */}
+            {/* Application Table */}
             <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <ApplicationTable />
+              <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
+                <ApplicationTable/>
               </Paper>
             </Grid>
           </Grid>

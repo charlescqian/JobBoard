@@ -57,6 +57,25 @@ app.get('/api/numApplicationsByDay/:daysBack', (req, res) => {
     });
 })
 
+app.get('/api/openPositions/', (req, res) => {
+    var con = getConnection();
+    
+    con.connect(function(err) {
+        if (err) throw err;
+        
+        // Create the SQL query with the given number of days back
+        const sql = `SELECT p.postingID as id, j.jobTitle as title, date_format(p.timePosted, "%m/%d/%Y") as date
+                    FROM Posting p, Job j
+                    WHERE p.jobID=j.jobID and p.status="Open"`;
+        
+        // Query the DB
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(result);
+            res.send(result);
+        });
+    });
+})
 app.listen(port, () =>
   console.log(`Server listening on port ${port}`),
 );

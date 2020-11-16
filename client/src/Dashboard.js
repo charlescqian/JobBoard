@@ -20,7 +20,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
-import Deposits from './Deposits';
+import OpenPositionsTable from './OpenPositionsTable';
 import ApplicationTable from './ApplicationTable';
 
 function Copyright() {
@@ -175,15 +175,15 @@ export default function Dashboard() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3} height="100%">
             {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12} md={6} lg={9}>
               <Paper className={fixedHeightPaper}>
                 <Chart />
               </Paper>
             </Grid>
             {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
+            <Grid item xs={12} md={6} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Deposits />
+                <OpenPositionsTable />
               </Paper>
             </Grid>
             {/* Application Table */}

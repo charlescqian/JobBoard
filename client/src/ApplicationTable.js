@@ -36,7 +36,11 @@ class ApplicationTable extends Component {
     console.log(this.state.postingID);
     fetch(`/api/applications/${this.state.postingID}`)
     .then(res => {
-      if(!res.ok) throw new Error(res.status);
+      if(res.status !== 200) {
+        console.log(res.status);
+        return [];
+      }
+      
       else return res.json();
     })
     .then(res => this.setState({applications: res}))
@@ -46,50 +50,50 @@ class ApplicationTable extends Component {
     
     return(
       <React.Fragment>
-      <Title>Applications</Title>
-      <Grid container direction="row" justify="flex-end" spacing={3}>
-        <Grid item xs={3}>
-          <TextField 
-            id="posting" 
-            name="postingID"
-            label="Posting" 
-            value={this.state.postingID}
-            type='number'
-            onChange={this.handleChange}/>
+        <Title>Applications</Title>
+        <Grid container direction="row" justify="flex-end" spacing={3}>
+          <Grid item xs={3}>
+            <TextField 
+              id="posting" 
+              name="postingID"
+              label="Posting" 
+              value={this.state.postingID}
+              type='number'
+              onChange={this.handleChange}/>
+          </Grid>
+          <Grid item xs={3}>
+            <Button 
+              variant="contained" 
+              onClick={this.getApplications}
+              >Search</Button>
+          </Grid>
         </Grid>
-        <Grid item xs={3}>
-          <Button 
-            variant="contained" 
-            onClick={this.getApplications}
-            >Search</Button>
-        </Grid>
-      </Grid>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>Time Applied</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Resume</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {this.state.applications.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.timeApplied}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.email}</TableCell>
-              <TableCell><a href={`/resume/${row.resume}`}>{row.resume}</a></TableCell>
-              <TableCell>
-                <Button variant="contained" color="primary" style={{textTransform: 'none'}}>
-                  Interview
-                </Button>
-              </TableCell>
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell>Time Applied</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Resume</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </React.Fragment>
+          </TableHead>
+          <TableBody>
+            {this.state.applications.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell>{row.timeApplied}</TableCell>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.email}</TableCell>
+                <TableCell><a href={`/resume/${row.resume}`}>{row.resume}</a></TableCell>
+                <TableCell>
+                  <Button variant="contained" color="primary" style={{textTransform: 'none'}}>
+                    Interview
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </React.Fragment>
     );
   }
 }

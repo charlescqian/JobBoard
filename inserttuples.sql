@@ -7,11 +7,9 @@ INSERT INTO Company
 VALUES(10034,'google', "dont be evil");
 
 INSERT INTO Employer
-VALUES(18324, 'mzuckerberg@facebook.com', 'badopsec', 'mark zuckerberg', 12942998);
-INSERT INTO Employer
 VALUES(18324, 'mzuckerberg@facebook.com', 'badopsec', 'mark zuckerberg', NULL);
+REPLACE INTO Employer
+VALUES(18324, 'mzuckerberg@facebook.com', 'badopsec', 'mark zuckerberg', 10034);
 
 INSERT INTO E1 
 VALUES('this job sucks', 18324, 'engineering');
-
-

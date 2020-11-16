@@ -31,7 +31,7 @@ CREATE TABLE Employer(employerID int,
 			  UNIQUE(email),
 			  PRIMARY KEY(employerID),
 			  FOREIGN KEY(cID) REFERENCES Company(companyID)
-			ON DELETE CASCADE ON UPDATE CASCADE);	
+			ON DELETE NO ACTION ON UPDATE CASCADE);	
 
 CREATE TABLE E1(jobDescription VARCHAR(255),
 				eID int,
@@ -135,7 +135,10 @@ ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY(aID) REFERENCES Application(applicationID)
 ON DELETE CASCADE ON UPDATE CASCADE) ;
 
+<<<<<<< HEAD
 				       
+=======
+>>>>>>> 9ab09a3791b9ca2ca1549fde811bfa59cd7d0055
 INSERT INTO Application
 VALUES
 	('2020-11-07 10:32:29', 0, 'EPresleyCV.pdf'),
@@ -188,5 +191,13 @@ VALUES
 
 -- REPLACE INTO Employer
 -- VALUES(18324, 'mzuckerberg@facebook.com', 'badopsec', 'mark zuckerberg', 10034);
+
+-- DELETE FROM Employer WHERE name = 'mark zuckerberg';
+-- INSERT INTO Employer
+-- VALUES(18324, 'mzuckerberg@facebook.com', 'badopsec', 'mark zuckerberg', 10034);
+
+
+
+
 
 

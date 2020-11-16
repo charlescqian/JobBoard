@@ -15,13 +15,16 @@ function getConnection() {
     });
 }
 
+// API endpoint for getting applications of a specific postingID
 app.get('/api/applications/:postingID', (req, res) => {
     var con = getConnection();
 
     con.connect(function(err) {
         if (err) throw err;
         console.log("Connected");
+        // Create the SQL query with the given postingID
         var sql = `select app.timeApplied, js.name, js.email, app.fileName from Apply a, Application app, jobseeker js where a.pID=${req.params.postingID} and a.aID = app.applicationID and js.jobseekerID = a.jID`;
+        // Query the DB
         con.query(sql, function (err, result) {
             if (err) throw err;
             console.log(result);
@@ -31,27 +34,6 @@ app.get('/api/applications/:postingID', (req, res) => {
 })
 
 
-// var con = getConnection()
-
-// con.connect(function(err) {
-//     if (err) throw err;
-//     console.log("Connected!");
-//     // var sql = "CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))";
-//     // con.query(sql, function (err, result) {
-//         // if (err) throw err;
-//         // console.log("Table created");
-//     // });
-//     var sql = "select app.timeApplied, js.name, js.email, app.fileName from Apply a, Application app, jobseeker js where a.pID=0 and a.aID = app.applicationID and js.jobseekerID = a.jID";
-//     con.query(sql, function (err, result) {
-//         if (err) throw err;
-//         console.log(result);
-//     });
-//     // con.query("SELECT * FROM customers", function (err, result, fields) {
-//     //     if (err) throw err;
-//     //     console.log(result);
-//     // });
-// });
-
 app.listen(port, () =>
-  console.log(`Listening on port ${port}!`),
+  console.log(`Server listening on port ${port}`),
 );

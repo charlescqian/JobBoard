@@ -43,7 +43,7 @@ CREATE TABLE E1(jobDescription VARCHAR(255),
 		       		industryType VARCHAR(20),
                     salary DECIMAL(19,2),
                     jobID int,
-                    jobDescription TEXT, 
+                    jobTitle VARCHAR(80), 
 		   			eID int NOT NULL,
 		    		PRIMARY KEY(jobID), 
 		    		FOREIGN KEY(eID) REFERENCES Employer(employerID)
@@ -59,10 +59,10 @@ CREATE TABLE J1(jobAddress VARCHAR(50),
 
 CREATE TABLE Posting(postingID int,
 				timePosted DATETIME(6), 
-				jID int NOT NULL,
+				jobID int NOT NULL,
 				status VARCHAR(20),
 				PRIMARY KEY(postingID),
-				FOREIGN KEY(jID) REFERENCES Job(jobID)
+				FOREIGN KEY(jobID) REFERENCES Job(jobID)
 				ON DELETE NO ACTION);
                 
 
@@ -168,7 +168,7 @@ INSERT INTO Posting
 VALUES 
 	(0, '2020-11-01 09:00:00', 0, 'Open'),
 	(1, '2020-11-01 10:00:00', 1, 'Open');
-
+	
 INSERT INTO Apply
 VALUES
 	(0, 0, 0),

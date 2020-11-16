@@ -35,6 +35,27 @@ app.get('/api/applications/:postingID', (req, res) => {
     });
 })
 
+// Endpoint for Aggregation Group By query, used to count the number of applications for each date
+app.get('/api/numApplicationsByDay/:daysBack', (req, res) => {
+    var con = getConnection();
+    
+    con.connect(function(err) {
+        if (err) throw err;
+        
+        // Create the SQL query with the given number of days back
+        const sql = `SELECT DATE_FORMAT(app.timeApplied, "%m/%d/%Y") as date, COUNT(*) as count
+                    FROM Application app
+                    WHERE app.timeApplied BETWEEN NOW() - INTERVAL ${req.params.daysBack} DAY AND NOW()
+                    GROUP BY date`;
+        
+        // Query the DB
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(result);
+            res.send(result);
+        });
+    });
+})
 
 app.listen(port, () =>
   console.log(`Server listening on port ${port}`),

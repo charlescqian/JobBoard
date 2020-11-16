@@ -40,7 +40,6 @@ class ApplicationTable extends Component {
         console.log(res.status);
         return [];
       }
-      
       else return res.json();
     })
     .then(res => this.setState({applications: res}))
@@ -56,7 +55,7 @@ class ApplicationTable extends Component {
             <TextField 
               id="posting" 
               name="postingID"
-              label="Posting" 
+              label="Posting ID" 
               value={this.state.postingID}
               type='number'
               onChange={this.handleChange}/>

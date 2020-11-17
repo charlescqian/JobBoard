@@ -3,58 +3,58 @@ CREATE DATABASE jobdb;
 use jobdb;
 
 CREATE TABLE Application(timeApplied DATETIME(6),
-			applicationID int,
-			fileName VARCHAR(255),
-			PRIMARY KEY(applicationID));
+			 applicationID int,
+			 fileName VARCHAR(255),
+			 PRIMARY KEY(applicationID));
 
 CREATE TABLE Jobseeker(jobseekerID int,
-			 	email VARCHAR(50) NOT NULL,
-			  	password VARCHAR(20) NOT NULL,
-			  	name VARCHAR(50) NOT NULL,
-				PRIMARY KEY(jobseekerID),
-				UNIQUE(email));
+		       email VARCHAR(50) NOT NULL,
+		       password VARCHAR(20) NOT NULL,
+		       name VARCHAR(50) NOT NULL,
+		       PRIMARY KEY(jobseekerID),
+		       UNIQUE(email));
 
 
-CREATE TABLE Company( companyID int,
-			  companyName VARCHAR(50),
-			  companyDescription TEXT,
-			  PRIMARY KEY (companyID));
+CREATE TABLE Company(companyID int,
+		     companyName VARCHAR(50),
+		     companyDescription TEXT,
+	             PRIMARY KEY (companyID));
 
 
 
 CREATE TABLE Employer(employerID int,
-					email VARCHAR(50) NOT NULL,
-					password VARCHAR(20) NOT NULL,
-					name VARCHAR(20) NOT NULL,
-					cID int,
-					UNIQUE(email),
-					PRIMARY KEY(employerID),
-					FOREIGN KEY(cID) REFERENCES Company(companyID)
-					ON DELETE NO ACTION ON UPDATE CASCADE);	
+		      email VARCHAR(50) NOT NULL,
+		      password VARCHAR(20) NOT NULL,
+		      name VARCHAR(20) NOT NULL,
+		      cID int,
+		      UNIQUE(email),
+		      PRIMARY KEY(employerID),
+		      FOREIGN KEY(cID) REFERENCES Company(companyID)
+		      	ON DELETE NO ACTION ON UPDATE CASCADE);	
 
 CREATE TABLE E1(jobDescription VARCHAR(255),
-					eID int,
-					department VARCHAR(50),
-					PRIMARY KEY(jobDescription),
-					FOREIGN KEY (eID) REFERENCES Employer(employerID)
-					ON DELETE CASCADE);
+		eID int,
+		department VARCHAR(50),
+		PRIMARY KEY(jobDescription),
+		FOREIGN KEY (eID) REFERENCES Employer(employerID)
+			ON DELETE CASCADE);
 
  CREATE TABLE Job(jobtype VARCHAR(20),
-		       		industryType VARCHAR(20),
-                    salary DECIMAL(19,2),
-                    jobID int,
-                    jobTitle VARCHAR(80), 
-		   			eID int NOT NULL,
-		    		PRIMARY KEY(jobID), 
-		    		FOREIGN KEY(eID) REFERENCES Employer(employerID)
-		      		ON DELETE NO ACTION);
+		  industryType VARCHAR(20),
+                  salary DECIMAL(19,2),
+                  jobID int,
+                  jobTitle VARCHAR(80), 
+		  eID int NOT NULL,
+		  PRIMARY KEY(jobID), 
+		  FOREIGN KEY(eID) REFERENCES Employer(employerID)
+		  	ON DELETE NO ACTION);
 
 CREATE TABLE J1(jobAddress VARCHAR(50),
-		        industryType VARCHAR(20),
-				companyName VARCHAR(50),
+		industryType VARCHAR(20),
+		companyName VARCHAR(50),
             	jID int,
-		        PRIMARY KEY(jobAddress, industryType),
-        		FOREIGN KEY(jID) REFERENCES Job(jobID)
+		PRIMARY KEY(jobAddress, industryType),
+        	FOREIGN KEY(jID) REFERENCES Job(jobID)
         		ON DELETE CASCADE);
 
 CREATE TABLE Posting(postingID int,
@@ -63,7 +63,7 @@ CREATE TABLE Posting(postingID int,
 				status VARCHAR(20),
 				PRIMARY KEY(postingID),
 				FOREIGN KEY(jobID) REFERENCES Job(jobID)
-				ON DELETE NO ACTION);
+					ON DELETE NO ACTION);
                 
 
 CREATE TABLE Interview(interviewID int,
@@ -73,53 +73,53 @@ CREATE TABLE Interview(interviewID int,
 				PRIMARY KEY(interviewID),	
 				UNIQUE (interviewLocation, interviewDateTime),
 				FOREIGN KEY (aID) REFERENCES Application(applicationID)
-ON DELETE CASCADE);
+					ON DELETE CASCADE);
 
 
 
-CREATE TABLE Apply(pID  int NOT NULL,
-				jID int NOT NULL,
-				aID int NOT NULL,
-				PRIMARY KEY(aID, jID),
-				UNIQUE(aID, pID),
-				FOREIGN KEY(pID) REFERENCES Posting(postingID)
-				ON DELETE CASCADE ON UPDATE CASCADE,
-				FOREIGN KEY(jID) REFERENCES Jobseeker(jobseekerID)
-				ON DELETE CASCADE ON UPDATE CASCADE,
-				FOREIGN KEY(aID) REFERENCES Application(applicationID)
-				ON DELETE CASCADE ON UPDATE CASCADE);
+CREATE TABLE Apply(pID int NOT NULL,
+		  jID int NOT NULL,
+		  aID int NOT NULL,
+		  PRIMARY KEY(aID, jID),
+		  UNIQUE(aID, pID),
+		  FOREIGN KEY(pID) REFERENCES Posting(postingID)
+		  	ON DELETE CASCADE ON UPDATE CASCADE,
+		  FOREIGN KEY(jID) REFERENCES Jobseeker(jobseekerID)
+		  	ON DELETE CASCADE ON UPDATE CASCADE,
+		  FOREIGN KEY(aID) REFERENCES Application(applicationID)
+		  	ON DELETE CASCADE ON UPDATE CASCADE);
 			
 CREATE TABLE Offer(offerTime DateTime(6),
-				offerID int,
-				aID int NOT NULL,
-				jID int NOT NULL,
-				PRIMARY KEY(offerID),
-				FOREIGN KEY(aID) REFERENCES Application(applicationID)
-				ON DELETE CASCADE ON UPDATE CASCADE,
-				FOREIGN KEY(jID) REFERENCES Jobseeker(jobseekerID)
-				ON DELETE CASCADE ON UPDATE CASCADE);
+             offerID int,
+	     aID int NOT NULL,
+	     jID int NOT NULL,
+	     PRIMARY KEY(offerID),
+             FOREIGN KEY(aID) REFERENCES Application(applicationID)
+	      	ON DELETE CASCADE ON UPDATE CASCADE,
+	     FOREIGN KEY(jID) REFERENCES Jobseeker(jobseekerID)
+             	ON DELETE CASCADE ON UPDATE CASCADE);
 					
 		   
 
 CREATE TABLE Resume(fileName VARCHAR(100),
-			uploadTime TIMESTAMP,
-			applicationID int,
-			jID int,
-			PRIMARY KEY(fileName, jID),
-			FOREIGN KEY(jID) REFERENCES Jobseeker(jobseekerID)
-			ON DELETE CASCADE ON UPDATE CASCADE);
+	     uploadTime TIMESTAMP,
+	     applicationID int,
+	     jID int,
+	     PRIMARY KEY(fileName, jID),
+	     FOREIGN KEY(jID) REFERENCES Jobseeker(jobseekerID)
+	     	ON DELETE CASCADE ON UPDATE CASCADE);
 			
 		           
 CREATE TABLE Extends(eID int NOT NULL,
-			oID int NOT NULL,
-			aID int NOT NULL,
-			PRIMARY KEY (aID, oID),
-			FOREIGN KEY(oID) REFERENCES Offer(offerID)
-			ON DELETE CASCADE ON UPDATE CASCADE,
-			FOREIGN KEY(aID) REFERENCES Application(applicationID)
-			ON DELETE CASCADE ON UPDATE CASCADE,
-			FOREIGN KEY(eID) REFERENCES Employer(employerID)
-			ON DELETE CASCADE ON UPDATE CASCADE);
+		     oID int NOT NULL,
+		     aID int NOT NULL,
+		     PRIMARY KEY (aID, oID),
+		     FOREIGN KEY(oID) REFERENCES Offer(offerID)
+	             	ON DELETE CASCADE ON UPDATE CASCADE,
+	             FOREIGN KEY(aID) REFERENCES Application(applicationID)
+		     	ON DELETE CASCADE ON UPDATE CASCADE,
+		     FOREIGN KEY(eID) REFERENCES Employer(employerID)
+		     	ON DELETE CASCADE ON UPDATE CASCADE);
 
 CREATE TABLE Conducts(eID int NOT NULL, 
 	iID int NOT NULL,

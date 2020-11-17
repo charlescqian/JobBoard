@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 class ApplicationTable extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       applications: [],
       postingID: '',

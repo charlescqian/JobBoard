@@ -59,6 +59,7 @@ app.get('/api/numApplicationsByDay/:daysBack', (req, res) => {
     });
 })
 
+// Endpoint for Open Positions (projection query)
 app.get('/api/openPositions/', (req, res) => {
     var con = getConnection();
     
@@ -78,6 +79,31 @@ app.get('/api/openPositions/', (req, res) => {
         });
     });
 })
+
+// Endpoint for ApplicationCount (Aggregation with having query)
+app.get('/api/applicationCount/:threshold', (req, res) => {
+    var con = getConnection();
+    
+    con.connect(function(err) {
+        if (err) throw err;
+        
+        // Create the SQL query with the given number of days back
+        const sql = `SELECT p.postingID as id, j.jobTitle as title, date_format(p.timePosted, "%m/%d/%Y") as date, count(*) as count
+                    FROM Posting p, Job j, Apply a
+                    WHERE p.jobID=j.jobID and p.status="Open" and p.postingID=a.pID
+                    GROUP BY p.postingID
+                    HAVING count(*) >= ${req.params.threshold}
+                    ORDER BY date`;
+        
+        // Query the DB
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(result);
+            res.send(result);
+        });
+    });
+})
+
 app.listen(port, () =>
   console.log(`Server listening on port ${port}`),
 );

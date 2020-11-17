@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { useTheme, withTheme } from '@material-ui/core/styles';
-import { BarChart, Line, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid, Tooltip, Legend, Bar } from 'recharts';
+import { BarChart, XAxis, YAxis, ResponsiveContainer, CartesianGrid, Tooltip, Legend, Bar } from 'recharts';
 import Title from './Title';
 import { Button, ButtonGroup } from '@material-ui/core';
 

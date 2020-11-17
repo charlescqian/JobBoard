@@ -141,7 +141,7 @@ VALUES
 	('2020-11-10 18:05:36', 4, 'BSpringsteenResume.pdf'),
 	('2020-11-06 19:53:41', 5, 'EPresleyCV.pdf'),
 	('2020-11-06 12:25:36', 6, 'Paul_McCartnery_Resume.pdf');
-
+	
 INSERT INTO Jobseeker
 VALUES
 	(0, 'epresley@comcast.net', '123password', 'Elvis Presley'),

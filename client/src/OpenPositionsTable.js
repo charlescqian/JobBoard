@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Link from '@material-ui/core/Link';
 import Title from './Title';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -28,7 +27,6 @@ class OpenPositionsTable extends Component {
   }
 
   render() {
-    const {classes} = this.props;
     return(
       <React.Fragment>
         <Title>Open Positions</Title>

@@ -22,13 +22,14 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import OpenPositionsTable from './OpenPositionsTable';
 import ApplicationTable from './ApplicationTable';
+import ApplicationCount from './ApplicationCount';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        JobBoard CS304
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -190,6 +191,12 @@ export default function Dashboard() {
             <Grid item xs={12}>
               <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
                 <ApplicationTable/>
+              </Paper>
+            </Grid>
+            {/* Application Count */}
+            <Grid item xs={6}>
+              <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
+                <ApplicationCount/>
               </Paper>
             </Grid>
           </Grid>

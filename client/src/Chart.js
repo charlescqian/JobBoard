@@ -29,9 +29,10 @@ class Chart extends Component {
       <React.Fragment>
         <Title># of Applications by Day</Title>
         <ButtonGroup color="primary" aria-label="contained primary button group" p={0.5}>
-          <Button onClick={() => this.getData(7)}>Last 7 Days</Button>
-          <Button onClick={() => this.getData(14)}>Last 14 Days</Button>
-          <Button onClick={() => this.getData(30)}>Last 30 Days</Button>
+          <Button variant="contained" onClick={() => this.getData(7)}>Last 7 Days</Button>
+          <Button variant="contained" onClick={() => this.getData(14)}>Last 14 Days</Button>
+          <Button variant="contained" onClick={() => this.getData(30)}>Last 30 Days</Button>
+          <Button variant="contained" onClick={() => this.getPostings(90)}>Last 90 Days</Button>
         </ButtonGroup>
         <ResponsiveContainer>
           <BarChart width={730} height={250} data={this.state.data}>

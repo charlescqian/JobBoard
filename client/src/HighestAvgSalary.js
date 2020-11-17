@@ -6,7 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
-import { Button, TextField, Grid, ButtonGroup } from '@material-ui/core';
+import { Button, Grid, ButtonGroup} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     seeMore: {
@@ -14,28 +14,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-class ApplicationCount extends Component {
+class HighestAvgSalary extends Component {
     constructor() {
         super();
         this.state = {
-            postings: [],
-            threshold: '',
+            data: [],
         };
 
-        this.handleChange = this.handleChange.bind(this);
         this.getData = this.getData.bind(this);
     }   
 
-
-    handleChange({target}) {
-        this.setState({
-          [target.name]: target.value
-        });
-    }
-
     getData = async () => {
         console.log(this.state.threshold);
-        fetch(`/api/applicationCount/${this.state.threshold}`)
+        fetch(`/api/highestAvgSalary/`)
         .then(res => {
             if(res.status !== 200) {
               console.log(res.status);
@@ -43,23 +34,14 @@ class ApplicationCount extends Component {
             }
             else return res.json();
         })
-        .then(res => this.setState({postings: res}))
+        .then(res => this.setState({data: res}))
     }
 
     render() {
         return (
             <React.Fragment>
-                <Title># of Applications per Open Posting</Title>
-                <Grid container direction="row" justify="flex-end" spacing={3}>
-                    <Grid item xs={3}>
-                        <TextField 
-                        id="threshold" 
-                        name="threshold"
-                        label="Min. # of Apps" 
-                        value={this.state.threshold}
-                        type='number'
-                        onChange={this.handleChange}/>
-                    </Grid>
+                <Title>Company with Highest Avg Salary</Title>
+                <Grid container direction="row" justify="flex-start" spacing={3}>
                     <Grid item xs={3}>
                         <ButtonGroup color="primary" aria-label="contained primary button group" p={0.5}>
                             <Button 
@@ -72,19 +54,15 @@ class ApplicationCount extends Component {
                 <Table size="small">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Posting ID</TableCell>
-                            <TableCell>Job Title</TableCell>
-                            <TableCell>Date Posted</TableCell>
-                            <TableCell># of Applications</TableCell>
+                            <TableCell>Company Name</TableCell>
+                            <TableCell>Avg Salary</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.state.postings.map((row) => (
+                        {this.state.data.map((row) => (
                         <TableRow key={row.id}>
-                            <TableCell>{row.id}</TableCell>
-                            <TableCell>{row.title}</TableCell>
-                            <TableCell>{row.date}</TableCell>
-                            <TableCell>{row.count}</TableCell>
+                            <TableCell>{row.companyName}</TableCell>
+                            <TableCell>{`$${row.avgSalary}`}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>
@@ -94,4 +72,4 @@ class ApplicationCount extends Component {
     }
 }
 
-export default withStyles(useStyles)(ApplicationCount);
+export default withStyles(useStyles)(HighestAvgSalary);

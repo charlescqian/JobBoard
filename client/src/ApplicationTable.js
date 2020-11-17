@@ -6,7 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
-import { Button, TextField, Grid } from '@material-ui/core';
+import { Button, TextField, Grid, ButtonGroup} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   seeMore: {
@@ -61,10 +61,13 @@ class ApplicationTable extends Component {
               onChange={this.handleChange}/>
           </Grid>
           <Grid item xs={3}>
-            <Button 
-              variant="contained" 
-              onClick={this.getApplications}
-              >Search</Button>
+            <ButtonGroup color="primary" aria-label="contained primary button group" p={0.5}>
+              <Button 
+                variant="contained" 
+                onClick={this.getApplications}
+                >Search
+              </Button>
+            </ButtonGroup>
           </Grid>
         </Grid>
         <Table size="small">

@@ -151,7 +151,7 @@ VALUES
 	(4, 'brucespring@live.ca', '12345678', 'Bruce Springsteen');
 
 INSERT INTO Company
-VALUES(10034,'google', "dont be evil");
+VALUES(10034,'Google', "dont be evil");
 
 INSERT INTO Employer
 VALUES(18324, 'mzuckerberg@facebook.com', 'badopsec', 'mark zuckerberg', 10034);

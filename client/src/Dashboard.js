@@ -23,6 +23,8 @@ import Chart from './Chart';
 import OpenPositionsTable from './OpenPositionsTable';
 import ApplicationTable from './ApplicationTable';
 import ApplicationCount from './ApplicationCount';
+import HighestAvgSalary from './HighestAvgSalary';
+import ApplicantTable from './ApplicantTable';
 
 function Copyright() {
   return (
@@ -176,15 +178,15 @@ export default function Dashboard() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3} height="100%">
             {/* Chart */}
-            <Grid item xs={12} md={6} lg={6}>
+            <Grid item xs={9}>
               <Paper className={fixedHeightPaper}>
                 <Chart />
               </Paper>
             </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={6} lg={6}>
+            {/* Highest Paying Company */}
+            <Grid item xs={3}>
               <Paper className={fixedHeightPaper}>
-                <OpenPositionsTable />
+                <HighestAvgSalary/>
               </Paper>
             </Grid>
             {/* Application Table */}
@@ -197,6 +199,18 @@ export default function Dashboard() {
             <Grid item xs={6}>
               <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
                 <ApplicationCount/>
+              </Paper>
+            </Grid>
+            {/* Open Positions */}
+            <Grid item xs={12} md={6} lg={6}>
+              <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
+                <OpenPositionsTable />
+              </Paper>
+            </Grid>
+            {/* Applicant Table */}
+            <Grid item xs={12}>
+              <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
+                <ApplicantTable/>
               </Paper>
             </Grid>
           </Grid>

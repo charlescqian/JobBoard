@@ -32,7 +32,7 @@ class Chart extends Component {
           <Button variant="contained" onClick={() => this.getData(7)}>Last 7 Days</Button>
           <Button variant="contained" onClick={() => this.getData(14)}>Last 14 Days</Button>
           <Button variant="contained" onClick={() => this.getData(30)}>Last 30 Days</Button>
-          <Button variant="contained" onClick={() => this.getPostings(90)}>Last 90 Days</Button>
+          <Button variant="contained" onClick={() => this.getData(90)}>Last 90 Days</Button>
         </ButtonGroup>
         <ResponsiveContainer>
           <BarChart width={730} height={250} data={this.state.data}>

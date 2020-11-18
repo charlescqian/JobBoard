@@ -59,10 +59,10 @@ CREATE TABLE J1(jobAddress VARCHAR(50),
 
 CREATE TABLE Posting(postingID int,
 		    timePosted DATETIME(6), 
-	            jID int NOT NULL,
+	            jobID int NOT NULL,
                     status VARCHAR(20),
 		    PRIMARY KEY(postingID),
-            FOREIGN KEY(jID) REFERENCES Job(jobID)
+            FOREIGN KEY(jobID) REFERENCES Job(jobID)
                           ON DELETE NO ACTION);
                 
 
@@ -217,18 +217,20 @@ VALUES
     
    
     
-INSERT INTO Apply
+INSERT INTO Apply (pID, jID, aID)
 VALUES
 	(0, 0, 0),
 	(0, 1, 1),
 	(0, 2, 2),
 	(1, 3, 3),
 	(1, 4, 4),
+	(2, 0, 5),
+	(2, 1, 6),
 	(5, 31, 8),
 	(5, 303, 12),
 	(6, 101, 13),
-        (5, 303, 14),
-        (6, 101, 15);
+	(5, 101, 14),
+	(6, 303, 15);
 			       
 
 

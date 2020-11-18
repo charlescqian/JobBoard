@@ -59,9 +59,10 @@ CREATE TABLE J1(jobAddress VARCHAR(50),
 
 CREATE TABLE Posting(postingID int,
 		    timePosted DATETIME(6), 
-	            jobID int NOT NULL,
+	            jID int NOT NULL,
                     status VARCHAR(20),
 		    PRIMARY KEY(postingID),
+            FOREIGN KEY(jID) REFERENCES Job(jobID)
                           ON DELETE NO ACTION);
                 
 
@@ -140,12 +141,14 @@ VALUES
 	('2020-11-10 18:05:36', 4, 'BSpringsteenResume.pdf'),
 	('2020-11-06 19:53:41', 5, 'EPresleyCV.pdf'),
 	('2020-11-06 12:25:36', 6, 'Paul_McCartnery_Resume.pdf'),
-        ('20120-11-04 3:23:1', 7, 'Alan_TuringCV.pdf'),
-        ('2020-10-1 1:1:1', 8, 'larrypage.pdf'),
-        ('2020-10-11 1:33:33', 9, 'enrico-fermi-dr_cv.pdf'),
-        ('2020-10-06 11:32:1', 11, 'rosalinfranklinapp11122.pdf'),
-        ('2020-11-07 1:1:1', 12, 'terrence_tao.pdf'),
-        ('2020-5-07 1:1:1', 13, 'nteslaresume.pdf');
+        ('2020-11-04 11:23:10', 7, 'Alan_TuringCV.pdf'),
+        ('2020-10-1 10:10:10', 8, 'larrypage.pdf'),
+        ('2020-10-11 01:33:33', 9, 'enrico-fermi-dr_cv.pdf'),
+        ('2020-10-06 11:03:1', 11, 'rosalinfranklinapp11122.pdf'),
+        ('2020-11-07 01:01:01', 12, 'terrence_tao_app1.pdf'),
+        ('2020-11-06 01:01:01', 13, 'terrence_tao_app2.pdf'),
+        ('2020-11-11 01:01:01', 14, 'nteslaresume1.pdf'),
+        ('2020-1-12 01:01:01', 15, 'nteslaresume2.pdf');
     
 	
 INSERT INTO Jobseeker
@@ -193,9 +196,9 @@ VALUES
         ('Software', 'Software', 1000000, 4, "COBOL Developer", 3993),
         ('Research Engineer', 'Research', 1000000, 5, "Google Research Lead", 97422),
         ('Software', 'Software Development', 90000, 6, "Ruby Ninja", 97422),
-        ('Professor', 'Education', 150000, 7, "EECS Professor", 3822),
-        ('Assistant Professor', 'Education', 150000, 8, "Literature Professor", 3822),
-        ('Professor', 'Education', 150000, 9, "Psychology Professor", 3822);
+        ('Professor', 'Education', 150000, 7, "EECS Professor", 1212),
+        ('Assistant Professor', 'Education', 150000, 8, "Literature Professor", 1212),
+        ('Professor', 'Education', 150000, 9, "Psychology Professor", 1212);
     
     
     
@@ -203,14 +206,14 @@ INSERT INTO Posting
 VALUES 
 	(0, '2020-11-01 09:00:00', 0, 'Open'),
 	(1, '2020-11-01 10:00:00', 1, 'Open'),
-	(2, '2020-11-05 12:30:00', 2, 'Closed'),
-        (3, '2020-11-01 12:12:12', 3, 'Closed'), 
-        (4, '2020-11-1 12:12:11:', 4, 'Closed'),
-	(5, '2020-11-1 12:12:11:', 5, 'Open'),
-        (6, '2020-10-1 11:12:11:', 6, 'Closed'),
-        (7, '2020-11-1 12:12:11:', 7, 'Open'),
-        (8, '2020-11-1 3:12:11:', 8, 'Open'),
-        (9, '2020-10-1 6:12:11:', 9, 'Open');
+	(2, '2020-11-05 02:30:00', 2, 'Closed'),
+        (3, '2020-11-01 05:12:12', 3, 'Closed'), 
+        (4, '2020-11-01 02:12:11', 4, 'Closed'),
+	(5, '2020-11-01 09:12:11', 5, 'Open'),
+        (6, '2020-10-01 11:12:11', 6, 'Open'),
+        (7, '2020-11-01 11:12:11', 7, 'Open'),
+        (8, '2020-11-01 03:12:11', 8, 'Open'),
+        (9, '2020-10-01 06:12:11', 9, 'Open');
     
    
     
@@ -223,9 +226,9 @@ VALUES
 	(1, 4, 4),
 	(5, 31, 8),
 	(5, 303, 12),
-	(5, 101, 13),
-        (6, 101, 13),
-        (6, 31, 8);
+	(6, 101, 13),
+        (5, 303, 14),
+        (6, 101, 15);
 			       
 
 

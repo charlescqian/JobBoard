@@ -1,0 +1,29 @@
+{
+  "name": "jobboard",
+  "version": "1.0.0",
+  "description": "Job Board Project for CPSC 304 (Group 17)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlescqian/JobBoard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charlescqian/JobBoard/issues"
+  },
+  "homepage": "https://github.com/charlescqian/JobBoard#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

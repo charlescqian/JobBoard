@@ -190,7 +190,7 @@ VALUES
 	('Engineering', 'Software', 200000, 1, "Senior Software Development Engineer", 18324),
 	('Engineering', 'Software', 80000, 2, "Software Engineer Intern", 18324),
         ( 'Manager', 'Hospitality', 40000, 3, "General Manager", 13833),
-        ('Software', 'Software', 1000000, 4, "CEO", 3993),
+        ('Software', 'Software', 1000000, 4, "COBOL Developer", 3993),
         ('Research Engineer', 'Research', 1000000, 5, "Google Research Lead", 97422),
         ('Software', 'Software Development', 90000, 6, "Ruby Ninja", 97422),
         ('Professor', 'Education', 150000, 7, "EECS Professor", 3822),

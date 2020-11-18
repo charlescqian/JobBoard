@@ -58,22 +58,21 @@ CREATE TABLE J1(jobAddress VARCHAR(50),
         		ON DELETE CASCADE);
 
 CREATE TABLE Posting(postingID int,
-				timePosted DATETIME(6), 
-				jobID int NOT NULL,
-				status VARCHAR(20),
-				PRIMARY KEY(postingID),
-				FOREIGN KEY(jobID) REFERENCES Job(jobID)
-					ON DELETE NO ACTION);
+		    timePosted DATETIME(6), 
+	            jobID int NOT NULL,
+                    status VARCHAR(20),
+		    PRIMARY KEY(postingID),
+                          ON DELETE NO ACTION);
                 
 
 CREATE TABLE Interview(interviewID int,
-				interviewLocation VARCHAR(100),
-				interviewDateTime DATETIME(6),
-				aID int NOT NULL,
-				PRIMARY KEY(interviewID),	
-				UNIQUE (interviewLocation, interviewDateTime),
-				FOREIGN KEY (aID) REFERENCES Application(applicationID)
-					ON DELETE CASCADE);
+		       interviewLocation VARCHAR(100),
+		       interviewDateTime DATETIME(6),
+		       aID int NOT NULL,
+		       PRIMARY KEY(interviewID),	
+	 	       UNIQUE (interviewLocation, interviewDateTime),
+		       FOREIGN KEY (aID) REFERENCES Application(applicationID)
+                            ON DELETE CASCADE);
 
 
 
@@ -126,11 +125,11 @@ CREATE TABLE Conducts(eID int NOT NULL,
 	aID int NOT NULL, 
 	PRIMARY KEY(iID, aID),
 	FOREIGN KEY(eID) REFERENCES Employer(employerID)
-	ON DELETE CASCADE ON UPDATE CASCADE,
+	      ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY(iID) REFERENCES Interview(interviewID)
-	ON DELETE CASCADE ON UPDATE CASCADE,
+	      ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY(aID) REFERENCES Application(applicationID)
-	ON DELETE CASCADE ON UPDATE CASCADE) ;
+	      ON DELETE CASCADE ON UPDATE CASCADE) ;
 
 INSERT INTO Application
 VALUES

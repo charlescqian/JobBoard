@@ -15,7 +15,7 @@ function getConnection() {
     });
 }
 
-// API endpoint for getting applications of a specific postingID
+// Join Query - API endpoint for getting applications of a specific postingID
 app.get('/api/applications/:postingID', (req, res) => {
     var con = getConnection();
 
@@ -178,7 +178,6 @@ app.get('/api/applicants/', (req, res) => {
         });
     });
 })
-
 
 app.listen(port, () =>
   console.log(`Server listening on port ${port}`),

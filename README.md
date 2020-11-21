@@ -18,13 +18,16 @@ List of dependencies (might not have everything):
 
 #### Steps
 1. Create a local MySQL database.
-2. Create a .env file in this project's root folder and fill out the DB_HOST, DB_USER and DB_PASS fields. Example below:
-    DB_HOST=localhost
+2. Create a `.env` file in this project's root folder and fill out the DB_HOST, DB_USER and DB_PASS fields. Example below:
+    `DB_HOST=localhost
     DB_USER=root
-    DB_PASS=password
-3. Run the init.sql file in the database.
-4. Run npm start in the root folder. This will run the server.js file.
-5. cd to client, run npm start, this will start the frontend.
+    DB_PASS=password`
+3. Run the `init.sql` file in the database.
+4. Run the `update-password.sql` file in the root folder, replacing the password with the root user's password.
+5. Run `npm install` in the root folder, this will install all server side dependencies.
+6. Run `npm install` in the client folder, this will install all client side dependencies.
+7. Run `npm start` in the root folder. This will run the server.js file.
+8. cd to client, run `npm start`, this will start the frontend.
 
 ## Resources Used
 Dashboard template is from https://github.com/mui-org/material-ui/tree/master/docs/src/pages/getting-started/templates/dashboard. We used this as a starter code for the frontend and built on top of it.

@@ -18,8 +18,7 @@
   },
   "homepage": "https://github.com/charlescqian/JobBoard#readme",
   "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mysql": "^2.18.1"
   },

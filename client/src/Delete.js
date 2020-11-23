@@ -48,7 +48,7 @@ class Delete extends Component {
                 <Grid container direction="row" justify="flex-end" spacing={3}>
                     <Grid item xs={3}>
                         <TextField
-                            name='jobid'
+                            name='jobID'
                             value={this.state.jobid}
                             type='number'
                             onChange={this.handleTextChange}/>

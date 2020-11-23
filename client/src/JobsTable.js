@@ -17,7 +17,7 @@ class JobsTable extends Component {
 
         this.getJobs = this.getJobs.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
-        this.performdelete = this.performdelete.bind(this);
+        this.performDelete = this.performDelete.bind(this);
     }
 
     getJobs = async() => {
@@ -36,7 +36,7 @@ class JobsTable extends Component {
         this.setState({ [e.target.name] : e.target.value});
     }
 
-    performdelete = async () => {
+    performDelete = async () => {
         console.log(this.state.jobID);
         fetch(`/api/delete/${this.state.jobID}`)
             .then(res => {
@@ -74,7 +74,7 @@ class JobsTable extends Component {
                         <ButtonGroup color="primary" aria-label="contained primary button group" p={0.5}>
                             <Button
                                 variant="contained"
-                                onClick={this.performdelete}
+                                onClick={this.performDelete}
                             >Delete
                             </Button>
                         </ButtonGroup>

@@ -222,8 +222,10 @@ app.all('/api/delete/:jobid', (req, res) => {
     con.connect(function (err) {
         if (err) throw err;
     });
+
     // Create the SQL query with the given job ID
     const sql = `DELETE FROM Job WHERE jobID=${req.params.jobid}`;
+    
     // Query the DB
     con.query(sql, function (err, result) {
         if (err) throw err;
@@ -241,7 +243,7 @@ app.all('/api/update/:jobType/:jobIndustry/:jobSalary/:jobid/:jobTitle/', (req, 
     con.connect(function (err) {
         if (err) throw err;
     });
-    console.log(req.params);
+
     // Create the SQL query with the given job ID, job industry, salary, title and type
     const sql = `UPDATE Job 
                 SET jobType ='${req.params.jobType}',
@@ -267,7 +269,6 @@ app.all('/api/insert/:jobType/:jobIndustry/:jobSalary/:jobid/:jobTitle/', (req, 
     con.connect(function (err) {
         if (err) throw err;
     });
-    console.log(req.params);
 
     // Create the SQL query with the given job ID, job industry, salary, title and type
     const sql = `INSERT INTO Job VALUE ('${req.params.jobType}',

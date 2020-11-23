@@ -49,7 +49,7 @@ class Delete extends Component {
                     <Grid item xs={3}>
                         <TextField
                             name='jobID'
-                            value={this.state.jobid}
+                            value={this.state.jobID}
                             type='number'
                             onChange={this.handleTextChange}/>
                     </Grid>

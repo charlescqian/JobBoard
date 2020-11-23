@@ -20,9 +20,14 @@ class Delete extends Component {
         this.state = {
             jobid:'',
         };
-        this.handle = this.handle.bind(this);
+        this.handleTextChange = this.handleTextChange.bind(this);
         this.performdelete = this.performdelete.bind(this);
     }
+
+    handleTextChange (e) {
+        this.setState({ [e.target.name] : e.target.value});
+    }
+
     performdelete = async () => {
         console.log(this.state.jobid);
         fetch(`/api/delete/${this.state.jobid}`)
@@ -35,11 +40,6 @@ class Delete extends Component {
             })
     }
 
-    handle({target}) {
-        this.setState({
-            [target.name]: target.value
-        });
-    }
 
     render() {
         return (
@@ -48,12 +48,10 @@ class Delete extends Component {
                 <Grid container direction="row" justify="flex-end" spacing={3}>
                     <Grid item xs={3}>
                         <TextField
-                            id="job"
-                            name="Job ID"
-                            label="Job ID"
+                            name='jobid'
                             value={this.state.jobid}
                             type='number'
-                            onChange={this.handle}/>
+                            onChange={this.handleTextChange}/>
                     </Grid>
                     <Grid item xs={3}>
                         <ButtonGroup color="primary" aria-label="contained primary button group" p={0.5}>

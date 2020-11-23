@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
-import { Button, ButtonGroup, Grid, Checkbox, TextField } from '@material-ui/core';
+import { Button, ButtonGroup, Grid, TextField } from '@material-ui/core';
 
 class JobsTable extends Component {
     constructor() {
@@ -16,12 +15,12 @@ class JobsTable extends Component {
             jobID:'',
         };
 
-        this.getjobs = this.getjobs.bind(this);
+        this.getJobs = this.getJobs.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
         this.performdelete = this.performdelete.bind(this);
     }
 
-    getjobs = async() => {
+    getJobs = async() => {
         fetch(`/api/jobs/`)
         .then(res=> {
         if(res.status !== 200) {
@@ -59,7 +58,7 @@ class JobsTable extends Component {
                         <ButtonGroup color="primary" aria-label="contained primary button group" p={0.5}>
                             <Button
                                 variant="contained"
-                                onClick={this.getjobs}
+                                onClick={this.getJobs}
                                 >Click to Load
                             </Button>
                         </ButtonGroup>

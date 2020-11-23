@@ -210,7 +210,7 @@ app.all('/api/delete/:jobid', (req, res)=> {
             console.log(result);
             res.send(result);
 
-        };
+        });
 
 
     });

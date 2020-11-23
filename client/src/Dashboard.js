@@ -26,7 +26,7 @@ import ApplicationCount from './ApplicationCount';
 import HighestAvgSalary from './HighestAvgSalary';
 import ApplicantTable from './ApplicantTable';
 import JobsTable from './JobsTable';
-import Delete from '.Delete';
+import Delete from './Delete';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">

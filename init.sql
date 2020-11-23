@@ -148,7 +148,7 @@ VALUES
 	('2020-11-07 01:01:01', 12, 'terrence_tao_app1.pdf'),
 	('2020-11-06 01:01:01', 13, 'terrence_tao_app2.pdf'),
 	('2020-11-11 01:01:01', 14, 'nteslaresume1.pdf'),
-	('2020-11-12 01:01:01', 15, 'nteslaresume2.pdf');
+	('2020-11-17 01:01:01', 15, 'nteslaresume2.pdf');
     
 	
 INSERT INTO Jobseeker
@@ -200,8 +200,9 @@ VALUES
 	('Software', 'Software Development', 90000, 6, "Ruby Ninja", 97422),
 	('Professor', 'Education', 150000, 7, "EECS Professor", 1212),
 	('Assistant Professor', 'Education', 150000, 8, "Literature Professor", 1212),
-	('Professor', 'Education', 150000, 9, "Psychology Professor", 1212);
-    
+	('Professor', 'Education', 150000, 9, "Psychology Professor", 1212),
+    ('Human Resources', 'Software', 80000, 10, "Technical Recruiter", 3993),
+	('Engineering', 'Software', 250000, 11, "Software Development Manager", 3993);
     
     
 INSERT INTO Posting
@@ -215,8 +216,9 @@ VALUES
 	(6, '2020-10-01 11:12:11', 6, 'Open'),
 	(7, '2020-11-01 11:12:11', 7, 'Open'),
 	(8, '2020-11-01 03:12:11', 8, 'Open'),
-	(9, '2020-10-01 06:12:11', 9, 'Open');
-    
+	(9, '2020-10-01 06:12:11', 9, 'Open'),
+    (10, '2020-11-17 12:30:00', 10, 'Open'),
+	(11, '2020-11-23 12:32:10', 11, 'Open');
    
     
 INSERT INTO Apply (pID, jID, aID)

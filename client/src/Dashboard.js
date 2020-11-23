@@ -26,7 +26,7 @@ import ApplicationCount from './ApplicationCount';
 import HighestAvgSalary from './HighestAvgSalary';
 import ApplicantTable from './ApplicantTable';
 import JobsTable from './JobsTable';
-import Delete from './Delete';
+
 function Copyright() {
   return (
       <Typography variant="body2" color="textSecondary" align="center">
@@ -220,12 +220,6 @@ export default function Dashboard() {
                   <JobsTable/>
                 </Paper>
               </Grid>
-              <Grid item xs={12}>
-                <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
-                  <Delete/>
-                </Paper>
-              </Grid>
-
             </Grid>
             <Box pt={4}>
               <Copyright />

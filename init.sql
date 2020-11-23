@@ -63,7 +63,7 @@ CREATE TABLE Posting(postingID int,
 				status VARCHAR(20),
 				PRIMARY KEY(postingID),
 				FOREIGN KEY(jobID) REFERENCES Job(jobID)
-				ON DELETE NO ACTION);
+				ON DELETE CASCADE);
                 
 
 CREATE TABLE Interview(interviewID int,

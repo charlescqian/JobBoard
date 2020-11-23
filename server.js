@@ -219,7 +219,7 @@ app.all('/api/delete/:jobid', (req, res) => {
 
 app.all('/api/updateInsert/:update/:jobType/:jobIndustry/:jobSalary/:jobid/:jobTitle/:employerID', (req, res) => {
     var con = getConnection();
-    if (req.params.update) {
+    if (req.params.update === 'true') {
         con.connect(function (err) {
             if (err) throw err;
             const sql = `DELETE FROM Job WHERE jobID=${req.params.jobid}`;
@@ -231,17 +231,23 @@ app.all('/api/updateInsert/:update/:jobType/:jobIndustry/:jobSalary/:jobid/:jobT
 
             });
         });
-    }
-    con.connect(function (err) {
-        if (err) throw err;
-        const sql = `INSERT INTO Job VALUE (${req.params.jobType$},${req.params.jobIndustry$}, ${req.params.jobSalary$},${req.params.jobid$},${req.params.jobTitle$},${req.params.employerID$},`;
-        con.query(sql, function (err, result) {
+    } else {
+        con.connect(function (err) {
             if (err) throw err;
-            console.log(result);
-            res.send(result);
-
+            const sql = `INSERT INTO Job VALUE ('${req.params.jobType}',
+                                                '${req.params.jobIndustry}',
+                                                ${req.params.jobSalary},
+                                                ${req.params.jobid},
+                                                '${req.params.jobTitle}',
+                                                18324);`;
+            con.query(sql, function (err, result) {
+                if (err) throw err;
+                console.log(result);
+                res.send(result);
+    
+            });
         });
-    });
+    }
 })
 
 

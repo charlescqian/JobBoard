@@ -26,6 +26,7 @@ import ApplicationCount from './ApplicationCount';
 import HighestAvgSalary from './HighestAvgSalary';
 import ApplicantTable from './ApplicantTable';
 import JobsTable from './JobsTable';
+import UpdateInsert from './UpdateInsert';
 
 function Copyright() {
   return (
@@ -218,6 +219,12 @@ export default function Dashboard() {
               <Grid item xs={12} md={6} lg={12}>
                 <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
                   <JobsTable/>
+                </Paper>
+              </Grid>
+              {/* Update/Insert Table */}
+              <Grid item xs={12} md={6} lg={12}>
+                <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
+                  <UpdateInsert/>
                 </Paper>
               </Grid>
             </Grid>

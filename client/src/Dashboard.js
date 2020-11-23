@@ -29,14 +29,14 @@ import JobsTable from './JobsTable';
 import Delete from './Delete';
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        JobBoard CS304
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
+      <Typography variant="body2" color="textSecondary" align="center">
+        {'Copyright © '}
+        <Link color="inherit" href="https://material-ui.com/">
+          JobBoard CS304
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
   );
 }
 
@@ -134,98 +134,104 @@ export default function Dashboard() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Employer Dashboard
-          </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-        }}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>{mainListItems}</List>
-        <Divider />
-        {/* <List>{secondaryListItems}</List> */}
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3} height="100%">
-            {/* Chart */}
-            <Grid item xs={9}>
-              <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
-            </Grid>
-            {/* Highest Paying Company */}
-            <Grid item xs={3}>
-              <Paper className={fixedHeightPaper}>
-                <HighestAvgSalary/>
-              </Paper>
-            </Grid>
-            {/* Application Table */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
-                <ApplicationTable/>
-              </Paper>
-            </Grid>
-            {/* Application Count */}
-            <Grid item xs={6}>
-              <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
-                <ApplicationCount/>
-              </Paper>
-            </Grid>
-            {/* Open Positions */}
-            <Grid item xs={12} md={6} lg={6}>
-              <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
-                <OpenPositionsTable />
-              </Paper>
-            </Grid>
-            {/* Applicant Table */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
-                <ApplicantTable/>
-              </Paper>
-            </Grid>
-            {/* Jobs Table */}
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+          <Toolbar className={classes.toolbar}>
+            <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+              Employer Dashboard
+            </Typography>
+            <IconButton color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        <Drawer
+            variant="permanent"
+            classes={{
+              paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+            }}
+            open={open}
+        >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={handleDrawerClose}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </div>
+          <Divider />
+          <List>{mainListItems}</List>
+          <Divider />
+          {/* <List>{secondaryListItems}</List> */}
+        </Drawer>
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          <Container maxWidth="lg" className={classes.container}>
+            <Grid container spacing={3} height="100%">
+              {/* Chart */}
+              <Grid item xs={9}>
+                <Paper className={fixedHeightPaper}>
+                  <Chart />
+                </Paper>
+              </Grid>
+              {/* Highest Paying Company */}
+              <Grid item xs={3}>
+                <Paper className={fixedHeightPaper}>
+                  <HighestAvgSalary/>
+                </Paper>
+              </Grid>
+              {/* Application Table */}
+              <Grid item xs={12}>
+                <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
+                  <ApplicationTable/>
+                </Paper>
+              </Grid>
+              {/* Application Count */}
+              <Grid item xs={6}>
+                <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
+                  <ApplicationCount/>
+                </Paper>
+              </Grid>
+              {/* Open Positions */}
+              <Grid item xs={12} md={6} lg={6}>
+                <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
+                  <OpenPositionsTable />
+                </Paper>
+              </Grid>
+              {/* Applicant Table */}
+              <Grid item xs={12}>
+                <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
+                  <ApplicantTable/>
+                </Paper>
+              </Grid>
+              {/* Jobs Table */}
               <Grid item xs={12} md={6} lg={12}>
-              <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
-                <JobsTable/>
-              </Paper>
+                <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
+                  <JobsTable/>
+                </Paper>
+              </Grid>
+              <Grid item xs={12}>
+                <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
+                  <Delete/>
+                </Paper>
+              </Grid>
+
             </Grid>
-          </Grid>
-          <Box pt={4}>
-            <Copyright />
-          </Box>
-        </Container>
-      </main>
-    </div>
+            <Box pt={4}>
+              <Copyright />
+            </Box>
+          </Container>
+        </main>
+      </div>
   );
 }

@@ -215,13 +215,13 @@ export default function Dashboard() {
                 </Paper>
               </Grid>
               {/* Jobs Table */}
-              <Grid item xs={12} md={6} lg={12}>
+              <Grid item xs={12} md={6} lg={6}>
                 <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
                   <JobsTable/>
                 </Paper>
               </Grid>
               {/* Update/Insert Table */}
-              <Grid item xs={12} md={6} lg={12}>
+              <Grid item xs={12} md={6} lg={6}>
                 <Paper className={classes.paper} style={{overflowY: 'hidden'}}>
                   <UpdateInsert/>
                 </Paper>

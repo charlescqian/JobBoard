@@ -73,18 +73,16 @@ class UpdateInsert extends Component {
                             name='jobid'
                             value={this.state.jobid}
                             type='number'
-                            label='Posting ID'
+                            label='Job ID'
                             onChange={this.handleTextChange} />
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={6}>
                         <ButtonGroup color="primary" aria-label="contained primary button group" p={0.5}>
                             <Button
                                 variant="contained"
                                 onClick={this.performUpdate}
                             >Update
                             </Button>
-                        </ButtonGroup>
-                        <ButtonGroup color="primary" aria-label="contained primary button group" p={0.5}>
                             <Button
                                 variant="contained"
                                 onClick={this.performInsert}

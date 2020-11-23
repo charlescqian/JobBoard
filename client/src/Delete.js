@@ -18,7 +18,7 @@ class Delete extends Component {
     constructor() {
         super()
         this.state = {
-            jobid:'',
+            jobID:'',
         };
         this.handleTextChange = this.handleTextChange.bind(this);
         this.performdelete = this.performdelete.bind(this);
@@ -29,8 +29,8 @@ class Delete extends Component {
     }
 
     performdelete = async () => {
-        console.log(this.state.jobid);
-        fetch(`/api/delete/${this.state.jobid}`)
+        console.log(this.state.jobID);
+        fetch(`/api/delete/${this.state.jobID}`)
             .then(res => {
                 if(res.status !== 200) {
                     console.log(res.status);

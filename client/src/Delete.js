@@ -8,6 +8,12 @@ import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
 import { Button, TextField, Grid, ButtonGroup} from '@material-ui/core';
 
+const useStyles = makeStyles((theme) => ({
+    seeMore: {
+        marginTop: theme.spacing(3),
+    },
+}));
+
 class Delete extends Component {
     constructor() {
         super()
@@ -65,4 +71,4 @@ class Delete extends Component {
         }
     }
 
-    export default Delete;
+export default withStyles(useStyles)(Delete);

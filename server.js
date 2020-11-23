@@ -164,7 +164,7 @@ app.get('/api/applicants/', (req, res) => {
                     WHERE js.jobseekerID=a.jID and app.applicationID=a.aID
                             AND NOT EXISTS (SELECT p.postingID
                                             FROM Posting p
-                                            WHERE p.postingID in (${req.query.postingID})
+                                            WHERE p.postingID in ${req.query.postingID})
                                                     AND NOT EXISTS (SELECT a1.pID
                                                                     FROM Apply a1
                                                                     WHERE a1.pID=p.postingID
@@ -178,6 +178,45 @@ app.get('/api/applicants/', (req, res) => {
         });
     });
 })
+
+
+
+app.get('/api/jobs/', (req, res)=> {
+
+var con = getConnection();
+    con.connect(function (err) {
+        if (err) throw err;
+        const sql = 'SELECT DISTINCT j.jobID as id, j.salary, j.industryType, j.jobTitle FROM Job j';
+
+        con.query(sql, function (err, result) {
+
+            if (err) throw err;
+            console.log(result);
+            res.send(result);
+
+        });
+    });
+})
+
+app.all('/api/delete/:jobid', (req, res)=> {
+
+    var con = getConnection();
+    con.connect(function (err) {
+        if (err) throw err;
+        const sql = `DELETE FROM Job WHERE jobID=${req.params.jobid}`;
+
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(result);
+            res.send(result);
+
+        };
+
+
+    });
+
+})
+
 
 app.listen(port, () =>
   console.log(`Server listening on port ${port}`),

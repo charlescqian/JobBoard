@@ -18,7 +18,6 @@ class UpdateInsert extends Component {
     constructor() {
         super()
         this.state = {
-            update: '',
             jobid: '',
             jobType: '',
             jobIndustry: '',
@@ -38,8 +37,7 @@ class UpdateInsert extends Component {
 
     performUpdate = async () => {
         console.log(this.state.jobid);
-        this.state.update = true;
-        fetch(`/api/updateinsert/${this.state.update}/${this.state.jobType}/${this.state.jobIndustry}/${this.state.jobSalary}/${this.state.jobid}/${this.state.jobTitle}/${this.state.employerID}/`)
+        fetch(`/api/update/${this.state.jobType}/${this.state.jobIndustry}/${this.state.jobSalary}/${this.state.jobid}/${this.state.jobTitle}/`)
             .then(res => {
                 if (res.status !== 200) {
                     console.log(res.status);
@@ -51,8 +49,7 @@ class UpdateInsert extends Component {
 
     performInsert = async () => {
         console.log(this.state.jobid);
-        this.state.update = false;
-        fetch(`/api/updateinsert/${this.state.update}/${this.state.jobType}/${this.state.jobIndustry}/${this.state.jobSalary}/${this.state.jobid}/${this.state.jobTitle}/${this.state.employerID}/`)
+        fetch(`/api/insert/${this.state.jobType}/${this.state.jobIndustry}/${this.state.jobSalary}/${this.state.jobid}/${this.state.jobTitle}/`)
             .then(res => {
                 if (res.status !== 200) {
                     console.log(res.status);
@@ -83,45 +80,49 @@ class UpdateInsert extends Component {
                                 onClick={this.performUpdate}
                             >Update
                             </Button>
-                            <Button
+                        </ButtonGroup>
+                        <ButtonGroup color = "primary" aria-label = "contained primary button group" p = {0.5}>
+                        <Button
                                 variant="contained"
                                 onClick={this.performInsert}
                             >Insert
                             </Button>
-                        </ButtonGroup>
+                            </ButtonGroup>
                     </Grid>
                 </Grid>
-                <Grid container direction="column" justify="flex-end" spacing={3}>
-                    <TextField
-                        name='jobType'
-                        value={this.state.jobType}
-                        type='text'
-                        label='Job Type'
-                        onChange={this.handleTextChange} />
-                    <TextField
-                        name='jobIndustry'
-                        value={this.state.jobIndustry}
-                        type='text'
-                        label='Job Industry'
-                        onChange={this.handleTextChange} />
-                    <TextField
-                        name='jobSalary'
-                        value={this.state.jobSalary}
-                        type='number'
-                        label='Job Salary'
-                        onChange={this.handleTextChange} />
-                    <TextField
-                        name='jobTitle'
-                        value={this.state.jobTitle}
-                        type='text'
-                        label='Job Title'
-                        onChange={this.handleTextChange} />
-                    <TextField
-                        name='employerID'
-                        value={this.state.employerID}
-                        type='number'
-                        label='Employer ID'
-                        onChange={this.handleTextChange} />
+                <Grid container direction="column" justify="flex-end" spacing={1}>
+                    <Grid item xs={9}>
+                        <TextField
+                            name='jobType'
+                            value={this.state.jobType}
+                            type='text'
+                            label='Job Type'
+                            onChange={this.handleTextChange} />
+                    </Grid>
+                    <Grid item xs={9}>
+                        <TextField
+                            name='jobIndustry'
+                            value={this.state.jobIndustry}
+                            type='text'
+                            label='Job Industry'
+                            onChange={this.handleTextChange} />
+                            </Grid>
+                    <Grid item xs={9}>
+                        <TextField
+                            name='jobSalary'
+                            value={this.state.jobSalary}
+                            type='number'
+                            label='Job Salary'
+                            onChange={this.handleTextChange} />
+                            </Grid>
+                    <Grid item xs={9}>
+                        <TextField
+                            name='jobTitle'
+                            value={this.state.jobTitle}
+                            type='text'
+                            label='Job Title'
+                            onChange={this.handleTextChange} />
+                            </Grid>
                 </Grid>
             </React.Fragment>
         );
